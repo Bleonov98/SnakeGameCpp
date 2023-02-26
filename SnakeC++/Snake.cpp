@@ -170,7 +170,7 @@ void Snake::HotKeys()
 {
 	while (!gameOver)
 	{
-		this_thread::sleep_for(100ms);
+		this_thread::sleep_for(25ms);
 		if (GetAsyncKeyState(VK_ESCAPE) & 0x8000) {
 			gameGo = false;
 			gameOver = true;
@@ -181,6 +181,7 @@ void Snake::HotKeys()
 		}
 		else if (GetAsyncKeyState(0x50)) {
 			pause = !pause;
+			Sleep(50);
 		}
 	}
 }
@@ -275,10 +276,14 @@ void Snake::SnakeMove()
 	ThHotKeys();
 
 	while (gameGo) {
+
 		if (pause) {
+
 			SetPoint(43, 38);
 			cout << "PAUSED";
+
 			while (pause) {}
+
 			SetPoint(43, 38);
 			cout << "      ";
 		}
